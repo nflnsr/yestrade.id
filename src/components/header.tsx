@@ -35,23 +35,14 @@ export function Header() {
       `${path}-navlink`,
     ) as HTMLElement;
     if (!activeState) return;
-    activeState.classList.add("border-red-700", "text-red-800")
+    activeState.classList.add("border-red-700", "text-red-800", "border-b-2");
 
     return () => {
-      activeState.classList.remove("border-red-700", "text-red-800")
-    };
-  }, [pathname]);
-
-  useEffect(() => {
-    const path: string = pathname.replace("/", "");
-    const activeState: HTMLElement = document.getElementById(
-      `${path}-link`,
-    ) as HTMLElement;
-    if (!activeState) return;
-    activeState.className = "border-b-2 border-red-700 text-red-800";
-
-    return () => {
-      activeState.className = "";
+      activeState.classList.remove(
+        "border-red-700",
+        "text-red-800",
+        "border-b-2",
+      );
     };
   }, [pathname]);
 
@@ -67,12 +58,18 @@ export function Header() {
         <div className="hidden w-full bg-[#f9f9f9] px-28 py-3 lg:flex">
           <div className=" flex w-full gap-6 text-sm font-bold tracking-widest text-slate-500">
             <h5>
-              <Link to="https://api.whatsapp.com/send/?phone=6282293105626">
+              <Link
+                to="https://api.whatsapp.com/send/?phone=6282293105626"
+                className="hover:text-red-800"
+              >
                 WECHAT: 15122791009
               </Link>
             </h5>
             <h5>
-              <Link to="mailto:naufaln176@gmail.com">
+              <Link
+                to="mailto:naufaln176@gmail.com"
+                className="hover:text-red-800"
+              >
                 E-MAIL: YESTRADE.ID@GMAIL.COM
               </Link>
             </h5>
@@ -129,7 +126,7 @@ export function Header() {
               </Link>
               <div className="block w-[80%]">
                 <h1 className="text-2xl font-bold text-red-950 sm:text-4xl">
-                  <Link to="/">Yestrade</Link>
+                  <Link to="/" className="hover:text-red-800">Yestrade</Link>
                 </h1>
               </div>
             </div>
@@ -138,8 +135,8 @@ export function Header() {
             <ul className="flex h-full items-center text-gray-500">
               <li
                 id="home-navlink"
-                className={`flex h-full items-center border-b-2 px-3.5 hover:border-red-700 ${
-                  pathname === "/" && "border-red-700 text-red-800"
+                className={`flex h-full items-center px-3.5 hover:border-red-700 ${
+                  pathname === "/" && "border-red-700 text-red-800 border-b-2"
                 }`}
               >
                 <Link
@@ -151,15 +148,12 @@ export function Header() {
               </li>
               <li
                 id="impor-navlink"
-                className="flex h-full items-center border-b-2 px-3.5 hover:border-red-700"
+                className="flex h-full items-center px-3.5 hover:border-red-700"
               >
                 <NavigationMenu className="px-0">
                   <NavigationMenuItem className="px-0">
-                    <NavigationMenuTrigger className="bg-transparent px-0 hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
-                      <Link
-                        to="/impor"
-                        className="text-sm font-semibold hover:text-red-800"
-                      >
+                    <NavigationMenuTrigger className="bg-transparent px-0 hover:bg-transparent hover:text-red-800 focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-red-800">
+                      <Link to="/impor" className="text-sm font-semibold">
                         IMPOR
                       </Link>
                     </NavigationMenuTrigger>
@@ -196,7 +190,7 @@ export function Header() {
               </li>
               <li
                 id="blog-navlink"
-                className="flex h-full items-center border-b-2 px-3.5 hover:border-red-700"
+                className="flex h-full items-center px-3.5 hover:border-red-700"
               >
                 <Link
                   to="/blog"
@@ -207,7 +201,7 @@ export function Header() {
               </li>
               <li
                 id="faq-navlink"
-                className="flex h-full items-center border-b-2 px-3.5 hover:border-red-700"
+                className="flex h-full items-center px-3.5 hover:border-red-700"
               >
                 <Link
                   to="/faq"
@@ -216,7 +210,7 @@ export function Header() {
                   FAQ
                 </Link>
               </li>
-              <li id="login-navlink" className="flex h-full items-center pl-4">
+              <li className="flex h-full items-center pl-4">
                 <Link
                   to="/login"
                   className="group text-sm font-semibold hover:text-red-800"
